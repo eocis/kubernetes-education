@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset
+  namespace: edu
+  labels:
+    tier: replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: replicaset-pod
+  template:
+    metadata:
+      labels:
+        tier: replicaset-pod
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+          - containerPort: 80

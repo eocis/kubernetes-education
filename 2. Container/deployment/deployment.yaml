@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu-deployment
+  namespace: edu
+  labels:
+    app: deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deployment
+  template:
+    metadata:
+      labels:
+        app: deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
